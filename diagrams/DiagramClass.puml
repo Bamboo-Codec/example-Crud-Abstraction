@@ -1,0 +1,44 @@
+@startuml DiagramClass
+
+class User {
+  - id
+  - name
+  - email
+  - password
+  + notes()
+}
+
+class Note {
+  - id
+  - user_id
+  - title
+  - content
+  + user()
+}
+
+class AbstractCrudController {
+  + index()
+  + store()
+  + show()
+  + update()
+  + destroy()
+}
+
+class CrudService {
+  + index()
+  + store()
+  + show()
+  + update()
+  + destroy()
+}
+
+class NoteController {
+  - relationName = "notes"
+  - validationRules
+}
+
+User --> Note
+NoteController --|> AbstractCrudController
+AbstractCrudController --> CrudService
+
+@enduml

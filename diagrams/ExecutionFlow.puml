@@ -1,0 +1,46 @@
+@startuml ExecutionFlow
+
+title Flujo de Ejecución - GET /api/notes
+
+== Inicio de la Petición ==
+
+client -> "NoteController" : **GET** /api/notes
+activate "NoteController"
+
+"NoteController" -> "AbstractCrudController" : index()
+activate "AbstractCrudController"
+
+"AbstractCrudController" -> "CrudService" : index()
+activate "CrudService"
+
+== Procesamiento ==
+
+"CrudService" -> "CrudService" : Obtiene usuario autenticado
+note right
+  <b>Auth::user()</b>
+  O similar según el framework
+end note
+
+"CrudService" -> "User" : user->notes()
+activate "User"
+
+"User" --> "CrudService" : Colección de notas
+deactivate "User"
+
+"CrudService" --> "AbstractCrudController" : Retorna colección
+deactivate "CrudService"
+
+== Respuesta ==
+
+"AbstractCrudController" --> "NoteController" : Datos procesados
+deactivate "AbstractCrudController"
+
+"NoteController" --> client : **Response JSON** (200 OK)
+deactivate "NoteController"
+
+legend right
+  <size:12><b>Leyenda:</b></size>
+  <b>GET</b> : Petición HTTP
+endlegend
+
+@enduml

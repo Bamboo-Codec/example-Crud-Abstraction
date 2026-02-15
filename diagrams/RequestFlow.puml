@@ -1,0 +1,33 @@
+@startuml
+title Diagrama de Secuencia HTTP
+
+actor Cliente
+participant Controller
+participant Service
+participant Modelo
+database DB
+
+Cliente -> Controller: HTTP Request
+activate Controller
+
+Controller -> Controller: Validar datos
+Controller -> Service: Llamar método
+activate Service
+
+Service -> Modelo: Consultar/Modificar
+activate Modelo
+
+Modelo -> DB: Query
+activate DB
+DB --> Modelo: Resultado
+deactivate DB
+
+Modelo --> Service: Datos
+deactivate Modelo
+
+Service --> Controller: Resultado
+deactivate Service
+
+Controller --> Cliente: JSON Response
+deactivate Controller
+@enduml
