@@ -1,3 +1,5 @@
+#### [English](./README.en.md) | Español
+
 # User-Scoped Generic CRUD API
 
 - [User-Scoped Generic CRUD API](#user-scoped-generic-crud-api)
