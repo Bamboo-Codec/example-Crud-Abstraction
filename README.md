@@ -44,6 +44,7 @@
     - [Actualizar registro](#actualizar-registro)
     - [Eliminar registro](#eliminar-registro)
   - [Conclusión](#conclusión)
+  - [Autor](#autor)
 
 ## Introducción
 
@@ -104,7 +105,6 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
-Configurar base de datos en .env.
 
 ### 4. Ejecutar migraciones
 ```bash
@@ -408,9 +408,9 @@ curl -X POST http://localhost:8000/api/notes \
      -H "Content-Type: application/json" \
      -H "Accept: application/json" \
      -d '{
-           'title' => 'Nota de prueba',
-            'content' => 'Este contenido es de prueba',
-        }'
+           "title": "Nota de prueba",
+           "content": "Este contenido es de prueba"
+         }'
 ```
 
 ### Listar registros
@@ -437,8 +437,8 @@ curl -X PUT http://localhost:8000/api/users/6 \
      -H "Content-Type: application/json" \
      -H "Accept: application/json" \
      -d '{
-           'title' => 'Nota actualizada',
-            'content' => 'Este contenido está actualizado',
+            "title": "Nota actualizada",
+            "content": "Este contenido está actualizado",
         }'
 ```
 
@@ -465,3 +465,9 @@ Es especialmente útil en sistemas donde:
 La combinación de: `AbstractCrudController`,`CrudService`,`Relaciones Eloquent`,`Autenticación basada en usuario`
 
 Permite construir APIs consistentes, seguras y escalables.
+
+---
+
+## Autor
+
+Si tienes feedback sobre esta arquitectura o te interesa conectar profesionalmente, encuéntrame en **[LinkedIn](www.linkedin.com/in/gabriel-da-silva-dev?follow_check=true)**.
